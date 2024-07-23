@@ -1,0 +1,11 @@
+{
+  "name": "getmx",
+  "version": "1.0.0",
+  "main": "getmx.js",
+  "scripts": {
+    "start": "node getmx.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
