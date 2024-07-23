@@ -1,9 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const dns = require('dns');
 const { promisify } = require('util');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Enable CORS for all routes
+app.use(cors());
 
 const resolveMx = promisify(dns.resolveMx);
 
@@ -36,7 +40,7 @@ app.get('/mx', async (req, res) => {
   const result = await getHighestPriorityMxRecord(domain);
   
   if (result) {
-    res.send(`${result.exchange}`);
+    res.send(`Highest priority MX record for ${domain}: Priority ${result.priority}, Exchange ${result.exchange}`);
   } else {
     res.status(404).send(`No MX records found or an error occurred for ${domain}.`);
   }
