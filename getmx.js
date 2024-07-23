@@ -36,7 +36,7 @@ app.get('/mx', async (req, res) => {
   const result = await getHighestPriorityMxRecord(domain);
   
   if (result) {
-    res.send(`Highest priority MX record for ${domain}: Priority ${result.priority}, Exchange ${result.exchange}`);
+    res.send(`${result.exchange}`);
   } else {
     res.status(404).send(`No MX records found or an error occurred for ${domain}.`);
   }
